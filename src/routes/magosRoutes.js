@@ -1,11 +1,12 @@
 const express = require('express');
-const router = express.Router();
 const magosController = require('../controllers/magosController');
 
-module.exports = (app) => {
-    app.get('/magos', magosController.getMagos);
-    app.post('/magos', magosController.criarMago);
-    app.get('/magos/:id', magosController.getMagoById);
-    app.put('/magos/:id', magosController.atualizarMago);
-    app.delete('/magos/:id', magosController.deletarMago);
-};
+const router = express.Router();
+
+router.get('/', magosController.getAllMagos);
+router.get('/:id', magosController.getMagoById);
+router.post('/', magosController.createMago);
+router.put('/:id', magosController.updateMago);
+router.delete('/:id', magosController.deleteMago);
+
+module.exports = router;
