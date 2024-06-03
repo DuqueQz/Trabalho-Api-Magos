@@ -4,7 +4,7 @@ app.use(express.json())
 require('./services/swagger')
 
 require('./routes')(app)
-app.get('/', (req, res) => res.status(200).send('Hello Wolrd'))
+app.get('/', (req, res) => res.status(200).send('Hello World'))
 
 app.use('/v1/docs', express.static('src/views'))
 app.use('/docs/swagger.yaml', express.static('src/docs/swagger.yaml'))
