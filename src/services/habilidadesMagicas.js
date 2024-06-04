@@ -96,10 +96,9 @@ const patchHabilidade = async (params) => {
     return await db.query(sql, binds);
 };
 
-module.exports = {
-    postHabilidade,
-    getHabilidades,
-    deleteHabilidade,
-    putHabilidade,
-    patchHabilidade
-};
+module.exports.postHabilidade = postHabilidade
+module.exports.getHabilidades = getHabilidades
+module.exports.deleteHabilidade = deleteHabilidade
+module.exports.putHabilidade = putHabilidade
+module.exports.patchHabilidade = patchHabilidade
+

@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "API MAGOS",
-    "description": "Documentação da API MAGOS "
+    "description": "Documentação da API Magos  "
   },
   "host": "localhost:3000",
   "basePath": "",
@@ -17,19 +17,16 @@
     "application/json"
   ],
   "paths": {
-    "/": {
-      "get": {
+    "/amizades": {
+      "post": {
         "description": "",
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Erro Interno do Servidor"
+          "default": {
+            "description": ""
           }
         }
       },
-      "post": {
+      "get": {
         "description": "",
         "responses": {
           "201": {
@@ -41,7 +38,7 @@
         }
       }
     },
-    "/{id}": {
+    "/amizades/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -53,11 +50,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Erro Interno do Servidor"
+          "default": {
+            "description": ""
           }
         }
       },
@@ -72,11 +66,674 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Nenhum Conteúdo"
           },
           "500": {
             "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/avaliacoes": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/avaliacoes/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Nenhum Conteúdo"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/conquistas": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/conquistas/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Nenhum Conteúdo"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/habilidadesMagicas": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/habilidadesMagicas/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Nenhum Conteúdo"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/interesses": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/interesses/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Nenhum Conteúdo"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/itensTrocados": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/itensTrocados/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Nenhum Conteúdo"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/magos": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/magos/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Nenhum Conteúdo"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/magosConquistas": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/magosConquistas/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Nenhum Conteúdo"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/mensagens": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/mensagens/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Nenhum Conteúdo"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/trocas": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/trocas/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       },

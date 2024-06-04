@@ -66,10 +66,8 @@ const patchMagoConquista = async (params) => {
     return await db.query(sql, binds);
 };
 
-module.exports = {
-    postMagoConquista,
-    getMagosConquistas,
-    deleteMagoConquista,
-    putMagoConquista,
-    patchMagoConquista
-};
+module.exports.postMagoConquista = postMagoConquista
+module.exports.getMagosConquistas = getMagosConquistas
+module.exports.deleteMagoConquista = deleteMagoConquista
+module.exports.putMagoConquista = putMagoConquista
+module.exports.patchMagoConquista = patchMagoConquista

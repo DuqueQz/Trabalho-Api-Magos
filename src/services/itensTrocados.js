@@ -95,11 +95,10 @@ const patchItemTrocado = async (params) => {
     console.log(sql);
     return await db.query(sql, binds);
 };
+ 
+module.exports.postItemTrocado = postItemTrocado
+module.exports.getItensTrocados = getItensTrocados
+module.exports.deleteItemTrocado = deleteItemTrocado
+module.exports.putItemTrocado = putItemTrocado
+module.exports.patchItemTrocado = patchItemTrocado
 
-module.exports = {
-    postItemTrocado,
-    getItensTrocados,
-    deleteItemTrocado,
-    putItemTrocado,
-    patchItemTrocado
-};

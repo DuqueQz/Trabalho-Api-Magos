@@ -91,10 +91,9 @@ const patchMago = async (params) => {
     return await db.query(sql, binds);
 };
 
-module.exports = {
-    postMago,
-    getMagos,
-    deleteMago,
-    putMago,
-    patchMago
-};
+module.exports.postMago = postMago 
+module.exports.getMagos = getMagos
+module.exports.deleteMago = deleteMago
+module.exports.putMago = putMago
+module.exports.patchMago = patchMago
+

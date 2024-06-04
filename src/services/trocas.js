@@ -76,10 +76,9 @@ const patchTroca = async (params) => {
     return await db.query(sql, binds);
 };
 
-module.exports = {
-    postTroca,
-    getTrocas,
-    deleteTroca,
-    putTroca,
-    patchTroca
-};
+module.exports.postTroca = postTroca
+module.exports.getTrocas = getTrocas
+module.exports.deleteTroca = deleteTroca
+module.exports.putTroca = putTroca
+module.exports.patchTroca = patchTroca
+

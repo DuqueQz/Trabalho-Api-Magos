@@ -81,10 +81,8 @@ const patchInteresse = async (params) => {
     return await db.query(sql, binds);
 };
 
-module.exports = {
-    postInteresse,
-    getInteresses,
-    deleteInteresse,
-    putInteresse,
-    patchInteresse
-};
+module.exports.postInteresse = postInteresse
+module.exports.getInteresses = getInteresses
+module.exports.deleteInteresse = deleteInteresse
+module.exports.putInteresse = putInteresse
+module.exports.patchInteresse = patchInteresse

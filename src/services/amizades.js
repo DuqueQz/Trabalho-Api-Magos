@@ -81,10 +81,8 @@ const patchAmizade = async (params) => {
     return await db.query(sql, binds);
 };
 
-module.exports = {
-    postAmizade,
-    getAmizades,
-    deleteAmizade,
-    putAmizade,
-    patchAmizade
-};
+module.exports.postAmizade = postAmizade
+module.exports.getAmizades = getAmizades
+module.exports.deleteAmizade = deleteAmizade
+module.exports.putAmizade = putAmizade
+module.exports.patchAmizade = patchAmizade
