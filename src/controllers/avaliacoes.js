@@ -52,10 +52,9 @@ const patchAvaliacao = async (req, res, next) => {
     }
 };
 
-module.exports = {
-    getAvaliacoes,
-    postAvaliacao,
-    deleteAvaliacao,
-    putAvaliacao,
-    patchAvaliacao
-};
+module.exports.getAvaliacoes = getAvaliacoes
+module.exports.postAvaliacao = postAvaliacao
+module.exports.deleteAvaliacao = deleteAvaliacao
+module.exports.putAvaliacao = putAvaliacao
+module.exports.patchAvaliacao = patchAvaliacao
+

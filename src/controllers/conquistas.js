@@ -52,10 +52,9 @@ const patchConquista = async (req, res, next) => {
     }
 };
 
-module.exports = {
-    getConquistas,
-    postConquista,
-    deleteConquista,
-    putConquista,
-    patchConquista
-};
+module.exports.getConquistas = getConquistas
+module.exports.postConquista = postConquista
+module.exports.deleteConquista = deleteConquista
+module.exports.putConquista = putConquista
+module.exports.patchConquista = patchConquista 
+

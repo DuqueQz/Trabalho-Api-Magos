@@ -52,10 +52,9 @@ const patchInteresse = async (req, res, next) => {
     }
 };
 
-module.exports = {
-    getInteresses,
-    postInteresse,
-    deleteInteresse,
-    putInteresse,
-    patchInteresse
-};
+module.exports.getInteresses = getInteresses
+module.exports.postInteresse = postInteresse
+module.exports.deleteInteresse = deleteInteresse
+module.exports.putInteresse = putInteresse
+module.exports.patchInteresse = patchInteresse
+

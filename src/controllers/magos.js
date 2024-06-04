@@ -52,10 +52,9 @@ const patchMago = async (req, res, next) => {
     }
 };
 
-module.exports = {
-    getMagos,
-    postMago,
-    deleteMago,
-    putMago,
-    patchMago
-};
+module.exports.getMagos = getMagos
+module.exports.postMago = postMago
+module.exports.deleteMago = deleteMago
+module.exports.putMago = putMago
+module.exports.patchMago = patchMago
+

@@ -54,10 +54,9 @@ const patchMagoConquista = async (req, res, next) => {
     }
 };
 
-module.exports = {
-    getMagosConquistas,
-    postMagoConquista,
-    deleteMagoConquista,
-    putMagoConquista,
-    patchMagoConquista
-};
+module.exports.getMagosConquistas = getMagosConquistas
+module.exports.postMagoConquista = postMagoConquista
+module.exports.deleteMagoConquista = deleteMagoConquista
+module.exports.putMagoConquista = putMagoConquista
+module.exports.patchMagoConquista = patchMagoConquista
+

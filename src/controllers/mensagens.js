@@ -52,10 +52,9 @@ const patchMensagem = async (req, res, next) => {
     }
 };
 
-module.exports = {
-    getMensagens,
-    postMensagem,
-    deleteMensagem,
-    putMensagem,
-    patchMensagem
-};
+module.exports.getMensagens = getMensagens
+module.exports.postMensagem = postMensagem
+module.exports.deleteMensagem = deleteMensagem
+module.exports.putMensagem = putMensagem
+module.exports.patchMensagem = patchMensagem
+

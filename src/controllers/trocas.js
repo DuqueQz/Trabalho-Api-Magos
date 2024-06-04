@@ -52,10 +52,9 @@ const patchTroca = async (req, res, next) => {
     }
 };
 
-module.exports = {
-    getTrocas,
-    postTroca,
-    deleteTroca,
-    putTroca,
-    patchTroca
-};
+module.exports.getTrocas = getTrocas
+module.exports.postTroca = postTroca
+module.exports.deleteTroca = deleteTroca
+module.exports.putTroca = putTroca
+module.exports.patchTroca = patchTroca
+

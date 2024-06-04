@@ -52,10 +52,9 @@ const patchHabilidade = async (req, res, next) => {
     }
 };
 
-module.exports = {
-    getHabilidades,
-    postHabilidade,
-    deleteHabilidade,
-    putHabilidade,
-    patchHabilidade
-};
+module.exports.getHabilidades = getHabilidades
+module.exports.postHabilidade = postHabilidade
+module.exports.deleteHabilidade = deleteHabilidade
+module.exports.putHabilidade = putHabilidade
+module.exports.patchHabilidade = patchHabilidade
+

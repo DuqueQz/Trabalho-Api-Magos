@@ -52,10 +52,8 @@ const patchItemTrocado = async (req, res, next) => {
     }
 };
 
-module.exports = {
-    getItensTrocados,
-    postItemTrocado,
-    deleteItemTrocado,
-    putItemTrocado,
-    patchItemTrocado
-};
+module.exports.getItensTrocados = getItensTrocados
+module.exports.postItemTrocado = postItemTrocado
+module.exports.deleteItemTrocado = deleteItemTrocado
+module.exports.putItemTrocado = putItemTrocado
+module.exports.patchItemTrocado = patchItemTrocado
