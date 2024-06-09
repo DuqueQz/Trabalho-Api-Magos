@@ -265,13 +265,31 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "json",
             "in": "body",
+            "description": "Dados para adicionar uma avaliação",
             "schema": {
               "type": "object",
               "properties": {
-                "id": {
-                  "example": "any"
+                "ava_id_troca": {
+                  "type": "number",
+                  "example": 1
+                },
+                "ava_id_mago_avaliador": {
+                  "type": "number",
+                  "example": 2
+                },
+                "ava_pontuacao": {
+                  "type": "number",
+                  "example": 200
+                },
+                "ava_comentario": {
+                  "type": "string",
+                  "example": "Boa troca"
+                },
+                "ava_data_da_avaliacao": {
+                  "type": "string",
+                  "example": "2003-09-03"
                 }
               }
             }
@@ -1088,7 +1106,7 @@
                   "type": "string",
                   "example": "mag_email"
                 },
-                "mag_senha": {
+                "mag_password": {
                   "type": "string",
                   "example": "mag_senha"
                 },
@@ -1162,7 +1180,7 @@
           {
             "name": "json",
             "in": "body",
-            "description": "Dados para Inserir um novo mago",
+            "description": "Dados para Atualizar um mago",
             "schema": {
               "type": "object",
               "properties": {
@@ -1240,13 +1258,35 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "json",
             "in": "body",
+            "description": "Dados para Atualizar parcialmente um mago",
             "schema": {
               "type": "object",
               "properties": {
-                "id": {
-                  "example": "any"
+                "mag_especializacao": {
+                  "type": "string",
+                  "example": "Nova Especialização"
+                },
+                "mag_nivel_de_magia": {
+                  "type": "number",
+                  "example": 12
+                },
+                "mag_nome": {
+                  "type": "string",
+                  "example": "Novo Nome"
+                },
+                "mag_data_de_nascimento": {
+                  "type": "string",
+                  "example": "2001-02-02"
+                },
+                "mag_nacionalidade": {
+                  "type": "string",
+                  "example": "Nova Nacionalidade"
+                },
+                "mag_bio": {
+                  "type": "string",
+                  "example": "Nova biografia"
                 }
               }
             }
@@ -1507,10 +1547,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "msg_id_troca": {
-                  "type": "number",
-                  "example": 1
-                },
                 "msg_remetente": {
                   "type": "string",
                   "example": "mago 1"
@@ -1786,16 +1822,19 @@
         "description": "Autentique um usuário com email e senha",
         "parameters": [
           {
-            "name": "body",
+            "name": "json",
             "in": "body",
+            "description": "Dados para Atualize um login",
             "schema": {
               "type": "object",
               "properties": {
-                "email": {
-                  "example": "any"
+                "mag_email": {
+                  "type": "string",
+                  "example": "email"
                 },
-                "senha": {
-                  "example": "any"
+                "mag_password": {
+                  "type": "string",
+                  "example": "senha"
                 }
               }
             }
@@ -1839,7 +1878,7 @@
                   "type": "string",
                   "example": "email"
                 },
-                "mag_senha": {
+                "mag_password": {
                   "type": "string",
                   "example": "senha"
                 }

@@ -11,7 +11,7 @@ module.exports = (app) => {
             type: 'json',
             schema: {
                 mag_email: "mag_email",
-                mag_senha: "mag_senha",
+                mag_password: "mag_senha",
                 mag_especializacao: "Piromancia",
                 mag_nivel_de_magia: 10,
                 mag_nome: "dumbeldore",
@@ -19,8 +19,8 @@ module.exports = (app) => {
                 mag_nacionalidade: "brasileiro",
                 mag_bio: "um mago"
             }
-           }
-           */
+        }
+        */
     );
 
     app.get('/magos', magosController.getMagos
@@ -35,7 +35,7 @@ module.exports = (app) => {
         // #swagger.description = 'Atualize um mago existente'
         /*#swagger.parameters['json'] = {
             in: 'body',
-            description: 'Dados para Inserir um novo mago',
+            description: 'Dados para Atualizar um mago',
             type: 'json',
             schema: {
                 mag_especializacao: "Piromancia",
@@ -45,8 +45,8 @@ module.exports = (app) => {
                 mag_nacionalidade: "brasileiro",
                 mag_bio: "um mago"
             }
-           }
-           */
+        }
+        */
     );
 
     app.delete('/magos/:id', magosController.deleteMago
@@ -59,5 +59,19 @@ module.exports = (app) => {
         // #swagger.tags = ["Magos"]
         // #swagger.summary = 'Atualize parcialmente um Mago'
         // #swagger.description = 'Atualize parcialmente um mago existente'
+        /*#swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para Atualizar parcialmente um mago',
+            type: 'json',
+            schema: {
+                mag_especializacao: "Nova Especialização",
+                mag_nivel_de_magia: 12,
+                mag_nome: "Novo Nome",
+                mag_data_de_nascimento: "2001-02-02",
+                mag_nacionalidade: "Nova Nacionalidade",
+                mag_bio: "Nova biografia"
+            }
+        }
+        */
     );
 };

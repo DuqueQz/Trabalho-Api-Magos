@@ -35,7 +35,6 @@ module.exports = (app) => {
             description: 'Dados para Inserir um novo mago',
             type: 'json',
             schema: {
-                msg_id_troca: 1,
                 msg_remetente: "mago 1",
                 msg_destinatario: "mago 2",
                 msg_conteudo: "deu boa aqui a troca",

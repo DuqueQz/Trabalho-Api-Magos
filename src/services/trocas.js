@@ -23,14 +23,34 @@ const getTrocas = async () => {
     return trocas;
 };
 
-const sql_delete = `
+const sql_delete_items = `
+    DELETE FROM itens_trocados
+    WHERE troca_id = $1
+`;
+
+const sql_delete_troca = `
     DELETE FROM trocas
     WHERE troca_id = $1
 `;
 
 const deleteTroca = async (params) => {
     const { id } = params;
-    await db.query(sql_delete, [id]);
+
+    try {
+        await db.query('BEGIN');
+        
+        // Excluindo os itens trocados associados
+        await db.query(sql_delete_items, [id]);
+        
+        // Excluindo a troca
+        await db.query(sql_delete_troca, [id]);
+
+        // Comitando a transação
+        await db.query('COMMIT');
+    } catch (error) {
+        await db.query('ROLLBACK');
+        throw error;
+    }
 };
 
 const sql_put = `
@@ -81,4 +101,3 @@ module.exports.getTrocas = getTrocas
 module.exports.deleteTroca = deleteTroca
 module.exports.putTroca = putTroca
 module.exports.patchTroca = patchTroca
-

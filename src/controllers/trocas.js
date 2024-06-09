@@ -57,4 +57,3 @@ module.exports.postTroca = postTroca
 module.exports.deleteTroca = deleteTroca
 module.exports.putTroca = putTroca
 module.exports.patchTroca = patchTroca
-

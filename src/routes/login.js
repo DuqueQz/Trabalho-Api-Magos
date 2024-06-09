@@ -11,6 +11,16 @@ module.exports = (app) => {
         // #swagger.tags = ["Login"]
         // #swagger.summary = 'Autentique um usuário'
         // #swagger.description = 'Autentique um usuário com email e senha'
+        /*#swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para Atualize um login',
+            type: 'json',
+            schema: {
+                mag_email: "email",
+                mag_password: "senha",
+            }
+           }
+           */
         
     );
 
@@ -24,7 +34,7 @@ module.exports = (app) => {
             type: 'json',
             schema: {
                 mag_email: "email",
-                mag_senha: "senha",
+                mag_password: "senha",
             }
            }
            */

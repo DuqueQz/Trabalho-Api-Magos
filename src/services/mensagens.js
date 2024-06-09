@@ -35,13 +35,13 @@ const deleteMensagem = async (params) => {
 
 const sql_put = `
     UPDATE mensagens
-    SET msg_id_troca = $2, msg_remetente = $3, msg_destinatario = $4, msg_conteudo = $5, msg_data_de_envio = $6
+    SET msg_remetente = $2, msg_destinatario = $3, msg_conteudo = $4, msg_data_de_envio = $5
     WHERE msg_id = $1
 `;
 
 const putMensagem = async (params) => {
-    const { id, msg_id_troca, msg_remetente, msg_destinatario, msg_conteudo, msg_data_de_envio } = params;
-    return await db.query(sql_put, [id, msg_id_troca, msg_remetente, msg_destinatario, msg_conteudo, msg_data_de_envio]);
+    const { id, msg_remetente, msg_destinatario, msg_conteudo, msg_data_de_envio } = params;
+    return await db.query(sql_put, [id, msg_remetente, msg_destinatario, msg_conteudo, msg_data_de_envio]);
 };
 
 const sql_patch = `

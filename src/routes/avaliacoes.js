@@ -40,7 +40,7 @@ module.exports = (app) => {
                 ava_id_mago_avaliador: 2,
                 ava_pontuacao: 200,
                 ava_comentario: "Boa troca",
-                ava_data_da_avaliacao: ""2003-09-03""
+                ava_data_da_avaliacao: "2003-09-03"
             }
            }
         */
