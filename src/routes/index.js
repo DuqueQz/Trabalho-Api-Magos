@@ -8,6 +8,7 @@ const Magos = require('./magos');
 const MagosConquistas = require('./magosConquistas');
 const Mensagens = require('./mensagens');
 const Trocas = require('./trocas');
+const Login = require('./login');
 
 module.exports=(app) => {
     Amizades(app)
@@ -20,4 +21,5 @@ module.exports=(app) => {
     MagosConquistas(app)
     Mensagens(app)
     Trocas(app)
+    Login(app)
 }

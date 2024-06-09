@@ -1,6 +1,8 @@
 -- Tabela de magos 
 CREATE TABLE magos (
     mag_id SERIAL PRIMARY KEY,
+    mag_email varchar(50),
+    mag_senha varchar(50),
     mag_especializacao VARCHAR(50) NOT NULL,
     mag_nivel_de_magia INT NOT NULL,
     mag_nome VARCHAR(100),

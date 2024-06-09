@@ -52,8 +52,8 @@ const patchAmizade = async (req, res, next) => {
     }
 };
 
-module.exports.getAmizades = getAmizades
-module.exports.postAmizade = postAmizade
-module.exports.deleteAmizade = deleteAmizade
-module.exports.putAmizade = putAmizade
-module.exports.patchAmizade = patchAmizade
+module.exports.getAmizades = getAmizades;
+module.exports.postAmizade = postAmizade;
+module.exports.deleteAmizade = deleteAmizade;
+module.exports.putAmizade = putAmizade;
+module.exports.patchAmizade = patchAmizade;

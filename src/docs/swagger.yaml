@@ -19,15 +19,54 @@
   "paths": {
     "/amizades": {
       "post": {
-        "description": "",
+        "tags": [
+          "Amizades"
+        ],
+        "summary": "Insira uma Amizade",
+        "description": "Insira uma Amizade Nova",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para Inserir uma nova Amizade",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "amiz_id_mago_1": {
+                  "type": "number",
+                  "example": 1
+                },
+                "amiz_id_mago_2": {
+                  "type": "number",
+                  "example": 2
+                },
+                "amiz_data_do_inicio": {
+                  "type": "string",
+                  "example": "2003-09-03"
+                },
+                "amiz_status": {
+                  "type": "string",
+                  "example": "ativa"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Amizades"
+        ],
+        "summary": "Consulta a lista de Amizades",
+        "description": "Consulta lista de amizades cadastradas",
         "responses": {
           "201": {
             "description": "Criado"
@@ -39,40 +78,61 @@
       }
     },
     "/amizades/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
       "put": {
-        "description": "",
+        "tags": [
+          "Amizades"
+        ],
+        "summary": "Faça uma alteração na Amizade",
+        "description": "Faça uma alteração na Amizade",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para atualizar uma Amizade",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "amiz_id_mago_1": {
+                  "type": "number",
+                  "example": 1
+                },
+                "amiz_id_mago_2": {
+                  "type": "number",
+                  "example": 2
+                },
+                "amiz_data_do_inicio": {
+                  "type": "string",
+                  "example": "2003-09-03"
+                },
+                "amiz_status": {
+                  "type": "string",
+                  "example": "ativa"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Amizades"
+        ],
+        "summary": "Delete uma Amizade",
+        "description": "Apague uma Amizade na Lista",
         "parameters": [
           {
             "name": "id",
@@ -89,19 +149,97 @@
             "description": "Erro Interno do Servidor"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Amizades"
+        ],
+        "summary": "Faça uma alteração parcial na Amizade",
+        "description": "Faça uma alteração parcial na Amizade",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
       }
     },
     "/avaliacoes": {
       "post": {
-        "description": "",
+        "tags": [
+          "Avaliações"
+        ],
+        "summary": "Crie uma Avaliação",
+        "description": "Crie uma nova avaliação",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para adicionar uma avaliação",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ava_id_troca": {
+                  "type": "number",
+                  "example": 1
+                },
+                "ava_id_mago_avaliador": {
+                  "type": "number",
+                  "example": 2
+                },
+                "ava_pontuacao": {
+                  "type": "number",
+                  "example": 200
+                },
+                "ava_comentario": {
+                  "type": "string",
+                  "example": "Boa troca"
+                },
+                "ava_data_da_avaliacao": {
+                  "type": "string",
+                  "example": "2003-09-03"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Avaliações"
+        ],
+        "summary": "Consulta a lista de Avaliações",
+        "description": "Consulta lista de avaliações cadastradas",
         "responses": {
           "201": {
             "description": "Criado"
@@ -113,40 +251,47 @@
       }
     },
     "/avaliacoes/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
       "put": {
-        "description": "",
+        "tags": [
+          "Avaliações"
+        ],
+        "summary": "Atualize uma Avaliação",
+        "description": "Atualize uma avaliação existente",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Avaliações"
+        ],
+        "summary": "Delete uma Avaliação",
+        "description": "Apague uma avaliação da lista",
         "parameters": [
           {
             "name": "id",
@@ -163,19 +308,93 @@
             "description": "Erro Interno do Servidor"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Avaliações"
+        ],
+        "summary": "Atualize parcialmente uma Avaliação",
+        "description": "Atualize parcialmente uma avaliação existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
       }
     },
     "/conquistas": {
       "post": {
-        "description": "",
+        "tags": [
+          "Conquistas"
+        ],
+        "summary": "Crie uma Conquista",
+        "description": "Crie uma nova conquista",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para adicionar uma conquista",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "conq_descricao_da_conquista": {
+                  "type": "string",
+                  "example": "Dados"
+                },
+                "conq_pontuacao": {
+                  "type": "number",
+                  "example": 200
+                },
+                "conq_tipo": {
+                  "type": "string",
+                  "example": "Bosses"
+                },
+                "conq_recompensa": {
+                  "type": "string",
+                  "example": "10 diamantes"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Conquistas"
+        ],
+        "summary": "Consulta a lista de Conquistas",
+        "description": "Consulta lista de conquistas cadastradas",
         "responses": {
           "201": {
             "description": "Criado"
@@ -187,40 +406,61 @@
       }
     },
     "/conquistas/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
       "put": {
-        "description": "",
+        "tags": [
+          "Conquistas"
+        ],
+        "summary": "Atualize uma Conquista",
+        "description": "Atualize uma conquista existente",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para alterar uma conquista",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "conq_descricao_da_conquista": {
+                  "type": "string",
+                  "example": "Dados"
+                },
+                "conq_pontuacao": {
+                  "type": "number",
+                  "example": 200
+                },
+                "conq_tipo": {
+                  "type": "string",
+                  "example": "Bosses"
+                },
+                "conq_recompensa": {
+                  "type": "string",
+                  "example": "10 diamantes"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Conquistas"
+        ],
+        "summary": "Delete uma Conquista",
+        "description": "Apague uma conquista da lista",
         "parameters": [
           {
             "name": "id",
@@ -237,19 +477,105 @@
             "description": "Erro Interno do Servidor"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Conquistas"
+        ],
+        "summary": "Atualize parcialmente uma Conquista",
+        "description": "Atualize parcialmente uma conquista existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
       }
     },
     "/habilidadesMagicas": {
       "post": {
-        "description": "",
+        "tags": [
+          "Habilidades Mágicas"
+        ],
+        "summary": "Crie uma Habilidade Mágica",
+        "description": "Crie uma nova habilidade mágica",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para adicionar uma habilidade",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "hab_nome_da_habilidade": {
+                  "type": "string",
+                  "example": "bola de fogo"
+                },
+                "hab_descricao": {
+                  "type": "string",
+                  "example": "Lança uma bola de fogo"
+                },
+                "hab_nivel_de_dificuldade": {
+                  "type": "number",
+                  "example": 1
+                },
+                "hab_escola_de_magia": {
+                  "type": "string",
+                  "example": "piromancia"
+                },
+                "hab_dano": {
+                  "type": "number",
+                  "example": 100
+                },
+                "hab_mana": {
+                  "type": "number",
+                  "example": 50
+                },
+                "hab_cooldown": {
+                  "type": "number",
+                  "example": 10
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Habilidades Mágicas"
+        ],
+        "summary": "Consulta a lista de Habilidades Mágicas",
+        "description": "Consulta lista de habilidades mágicas cadastradas",
         "responses": {
           "201": {
             "description": "Criado"
@@ -261,40 +587,73 @@
       }
     },
     "/habilidadesMagicas/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
       "put": {
-        "description": "",
+        "tags": [
+          "Habilidades Mágicas"
+        ],
+        "summary": "Atualize uma Habilidade Mágica",
+        "description": "Atualize uma habilidade mágica existente",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para adicionar uma habilidade",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "hab_nome_da_habilidade": {
+                  "type": "string",
+                  "example": "bola de fogo"
+                },
+                "hab_descricao": {
+                  "type": "string",
+                  "example": "Lança uma bola de fogo"
+                },
+                "hab_nivel_de_dificuldade": {
+                  "type": "number",
+                  "example": 1
+                },
+                "hab_escola_de_magia": {
+                  "type": "string",
+                  "example": "piromancia"
+                },
+                "hab_dano": {
+                  "type": "number",
+                  "example": 100
+                },
+                "hab_mana": {
+                  "type": "number",
+                  "example": 50
+                },
+                "hab_cooldown": {
+                  "type": "number",
+                  "example": 10
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Habilidades Mágicas"
+        ],
+        "summary": "Delete uma Habilidade Mágica",
+        "description": "Apague uma habilidade mágica da lista",
         "parameters": [
           {
             "name": "id",
@@ -311,19 +670,93 @@
             "description": "Erro Interno do Servidor"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Habilidades Mágicas"
+        ],
+        "summary": "Atualize parcialmente uma Habilidade Mágica",
+        "description": "Atualize parcialmente uma habilidade mágica existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
       }
     },
     "/interesses": {
       "post": {
-        "description": "",
+        "tags": [
+          "Interesses"
+        ],
+        "summary": "Crie um Interesse",
+        "description": "Crie um novo interesse",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para adicionar uma habilidade",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "int_id_mago": {
+                  "type": "number",
+                  "example": 1
+                },
+                "int_id_habilidade": {
+                  "type": "number",
+                  "example": 1
+                },
+                "int_nivel_de_interesse": {
+                  "type": "number",
+                  "example": 11
+                },
+                "int_data_de_registro": {
+                  "type": "string",
+                  "example": "2003-09-03"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Interesses"
+        ],
+        "summary": "Consulta a lista de Interesses",
+        "description": "Consulta lista de interesses cadastrados",
         "responses": {
           "201": {
             "description": "Criado"
@@ -335,40 +768,61 @@
       }
     },
     "/interesses/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
       "put": {
-        "description": "",
+        "tags": [
+          "Interesses"
+        ],
+        "summary": "Atualize um Interesse",
+        "description": "Atualize um interesse existente",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para adicionar uma habilidade",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "int_id_mago": {
+                  "type": "number",
+                  "example": 1
+                },
+                "int_id_habilidade": {
+                  "type": "number",
+                  "example": 1
+                },
+                "int_nivel_de_interesse": {
+                  "type": "number",
+                  "example": 11
+                },
+                "int_data_de_registro": {
+                  "type": "string",
+                  "example": "2003-09-03"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Interesses"
+        ],
+        "summary": "Delete um Interesse",
+        "description": "Apague um interesse da lista",
         "parameters": [
           {
             "name": "id",
@@ -385,19 +839,105 @@
             "description": "Erro Interno do Servidor"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Interesses"
+        ],
+        "summary": "Atualize parcialmente um Interesse",
+        "description": "Atualize parcialmente um interesse existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
       }
     },
     "/itensTrocados": {
       "post": {
-        "description": "",
+        "tags": [
+          "Itens Trocados"
+        ],
+        "summary": "Crie um Item Trocado",
+        "description": "Crie um novo item trocado",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para adicionar uma Itens Trocados",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "troca_id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "item_nome": {
+                  "type": "string",
+                  "example": "bola de fogo"
+                },
+                "item_descricao": {
+                  "type": "string",
+                  "example": "lança uyma bola de fogo"
+                },
+                "item_nivel_de_dificuldade": {
+                  "type": "number",
+                  "example": 1
+                },
+                "item_escola_de_magia": {
+                  "type": "string",
+                  "example": "piromancia"
+                },
+                "item_dano": {
+                  "type": "number",
+                  "example": 100
+                },
+                "item_mana": {
+                  "type": "number",
+                  "example": 50
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Itens Trocados"
+        ],
+        "summary": "Consulta a lista de Itens Trocados",
+        "description": "Consulta lista de itens trocados cadastrados",
         "responses": {
           "201": {
             "description": "Criado"
@@ -409,40 +949,73 @@
       }
     },
     "/itensTrocados/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
       "put": {
-        "description": "",
+        "tags": [
+          "Itens Trocados"
+        ],
+        "summary": "Atualize um Item Trocado",
+        "description": "Atualize um item trocado existente",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para adicionar uma Itens Trocados",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "troca_id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "item_nome": {
+                  "type": "string",
+                  "example": "bola de fogo"
+                },
+                "item_descricao": {
+                  "type": "string",
+                  "example": "lança uyma bola de fogo"
+                },
+                "item_nivel_de_dificuldade": {
+                  "type": "number",
+                  "example": 1
+                },
+                "item_escola_de_magia": {
+                  "type": "string",
+                  "example": "piromancia"
+                },
+                "item_dano": {
+                  "type": "number",
+                  "example": 100
+                },
+                "item_mana": {
+                  "type": "number",
+                  "example": 50
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Itens Trocados"
+        ],
+        "summary": "Delete um Item Trocado",
+        "description": "Apague um item trocado da lista",
         "parameters": [
           {
             "name": "id",
@@ -459,19 +1032,109 @@
             "description": "Erro Interno do Servidor"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Itens Trocados"
+        ],
+        "summary": "Atualize parcialmente um Item Trocado",
+        "description": "Atualize parcialmente um item trocado existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
       }
     },
     "/magos": {
       "post": {
-        "description": "",
+        "tags": [
+          "Magos"
+        ],
+        "summary": "Crie um Mago",
+        "description": "Crie um novo mago",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para Inserir um novo mago",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mag_email": {
+                  "type": "string",
+                  "example": "mag_email"
+                },
+                "mag_senha": {
+                  "type": "string",
+                  "example": "mag_senha"
+                },
+                "mag_especializacao": {
+                  "type": "string",
+                  "example": "Piromancia"
+                },
+                "mag_nivel_de_magia": {
+                  "type": "number",
+                  "example": 10
+                },
+                "mag_nome": {
+                  "type": "string",
+                  "example": "dumbeldore"
+                },
+                "mag_data_de_nascimento": {
+                  "type": "string",
+                  "example": "2000-01-01"
+                },
+                "mag_nacionalidade": {
+                  "type": "string",
+                  "example": "brasileiro"
+                },
+                "mag_bio": {
+                  "type": "string",
+                  "example": "um mago"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Magos"
+        ],
+        "summary": "Consulta a lista de Magos",
+        "description": "Consulta lista de magos cadastrados",
         "responses": {
           "201": {
             "description": "Criado"
@@ -483,40 +1146,69 @@
       }
     },
     "/magos/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
       "put": {
-        "description": "",
+        "tags": [
+          "Magos"
+        ],
+        "summary": "Atualize um Mago",
+        "description": "Atualize um mago existente",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para Inserir um novo mago",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mag_especializacao": {
+                  "type": "string",
+                  "example": "Piromancia"
+                },
+                "mag_nivel_de_magia": {
+                  "type": "number",
+                  "example": 10
+                },
+                "mag_nome": {
+                  "type": "string",
+                  "example": "dumbeldore"
+                },
+                "mag_data_de_nascimento": {
+                  "type": "string",
+                  "example": "2000-01-01"
+                },
+                "mag_nacionalidade": {
+                  "type": "string",
+                  "example": "brasileiro"
+                },
+                "mag_bio": {
+                  "type": "string",
+                  "example": "um mago"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Magos"
+        ],
+        "summary": "Delete um Mago",
+        "description": "Apague um mago da lista",
         "parameters": [
           {
             "name": "id",
@@ -533,19 +1225,89 @@
             "description": "Erro Interno do Servidor"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Magos"
+        ],
+        "summary": "Atualize parcialmente um Mago",
+        "description": "Atualize parcialmente um mago existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
       }
     },
     "/magosConquistas": {
       "post": {
-        "description": "",
+        "tags": [
+          "Magos Conquistas"
+        ],
+        "summary": "Crie uma Conquista de Mago",
+        "description": "Crie uma nova conquista de mago",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para Inserir uma nova conquista de Mago",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mag_id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "conq_id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "conq_data_da_conquista": {
+                  "type": "string",
+                  "example": "2000-01-01"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Magos Conquistas"
+        ],
+        "summary": "Consulta a lista de Conquistas de Magos",
+        "description": "Consulta lista de conquistas de magos cadastradas",
         "responses": {
           "201": {
             "description": "Criado"
@@ -557,40 +1319,53 @@
       }
     },
     "/magosConquistas/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
       "put": {
-        "description": "",
+        "tags": [
+          "Magos Conquistas"
+        ],
+        "summary": "Atualize uma Conquista de Mago",
+        "description": "Atualize uma conquista de mago existente",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para Inserir um novo mago",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "conq_id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "conq_data_da_conquista": {
+                  "type": "string",
+                  "example": "2000-01-01"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Magos Conquistas"
+        ],
+        "summary": "Delete uma Conquista de Mago",
+        "description": "Apague uma conquista de mago da lista",
         "parameters": [
           {
             "name": "id",
@@ -607,19 +1382,100 @@
             "description": "Erro Interno do Servidor"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Magos Conquistas"
+        ],
+        "summary": "Atualize parcialmente uma Conquista de Mago",
+        "description": "Atualize parcialmente uma conquista de mago existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mag_id": {
+                  "example": "any"
+                },
+                "conq_id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
       }
     },
     "/mensagens": {
       "post": {
-        "description": "",
+        "tags": [
+          "Mensagens"
+        ],
+        "summary": "Crie uma Mensagem",
+        "description": "Crie uma nova mensagem",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para Inserir um novo mago",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg_id_troca": {
+                  "type": "number",
+                  "example": 1
+                },
+                "msg_remetente": {
+                  "type": "string",
+                  "example": "mago 1"
+                },
+                "msg_destinatario": {
+                  "type": "string",
+                  "example": "mago 2"
+                },
+                "msg_conteudo": {
+                  "type": "string",
+                  "example": "deu boa aqui a troca"
+                },
+                "msg_data_de_envio": {
+                  "type": "string",
+                  "example": "2003-09-03"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Mensagens"
+        ],
+        "summary": "Consulta a lista de Mensagens",
+        "description": "Consulta lista de mensagens cadastradas",
         "responses": {
           "201": {
             "description": "Criado"
@@ -631,40 +1487,65 @@
       }
     },
     "/mensagens/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
       "put": {
-        "description": "",
+        "tags": [
+          "Mensagens"
+        ],
+        "summary": "Atualize uma Mensagem",
+        "description": "Atualize uma mensagem existente",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para Inserir um novo mago",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "msg_id_troca": {
+                  "type": "number",
+                  "example": 1
+                },
+                "msg_remetente": {
+                  "type": "string",
+                  "example": "mago 1"
+                },
+                "msg_destinatario": {
+                  "type": "string",
+                  "example": "mago 2"
+                },
+                "msg_conteudo": {
+                  "type": "string",
+                  "example": "deu boa aqui a troca"
+                },
+                "msg_data_de_envio": {
+                  "type": "string",
+                  "example": "2003-09-03"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Mensagens"
+        ],
+        "summary": "Delete uma Mensagem",
+        "description": "Apague uma mensagem da lista",
         "parameters": [
           {
             "name": "id",
@@ -681,19 +1562,89 @@
             "description": "Erro Interno do Servidor"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Mensagens"
+        ],
+        "summary": "Atualize parcialmente uma Mensagem",
+        "description": "Atualize parcialmente uma mensagem existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
       }
     },
     "/trocas": {
       "post": {
-        "description": "",
+        "tags": [
+          "Trocas"
+        ],
+        "summary": "Crie uma Troca",
+        "description": "Crie uma nova troca",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para Inserir um novo mago",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "troca_id_mago_ofertante": {
+                  "type": "number",
+                  "example": 1
+                },
+                "troca_id_mago_interessado": {
+                  "type": "number",
+                  "example": 1
+                },
+                "troca_data": {
+                  "type": "string",
+                  "example": "2003-09-03"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "get": {
-        "description": "",
+        "tags": [
+          "Trocas"
+        ],
+        "summary": "Consulta a lista de Trocas",
+        "description": "Consulta lista de trocas cadastradas",
         "responses": {
           "201": {
             "description": "Criado"
@@ -705,40 +1656,212 @@
       }
     },
     "/trocas/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
       "put": {
-        "description": "",
+        "tags": [
+          "Trocas"
+        ],
+        "summary": "Atualize uma Troca",
+        "description": "Atualize uma troca existente",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para Inserir um novo mago",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "troca_id_mago_ofertante": {
+                  "type": "number",
+                  "example": 1
+                },
+                "troca_id_mago_interessado": {
+                  "type": "number",
+                  "example": 1
+                },
+                "troca_data": {
+                  "type": "string",
+                  "example": "2003-09-03"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Trocas"
+        ],
+        "summary": "Delete uma Troca",
+        "description": "Apague uma troca da lista",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Nenhum Conteúdo"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Trocas"
+        ],
+        "summary": "Atualize parcialmente uma Troca",
+        "description": "Atualize parcialmente uma troca existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/login": {
+      "get": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Obtenha todos os logins",
+        "description": "Obtenha a lista de todos os logins",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/login/authenticate": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Autentique um usuário",
+        "description": "Autentique um usuário com email e senha",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "senha": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/login/{id}": {
+      "put": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Atualize um login",
+        "description": "Atualize um login existente com base no ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para Atualize um login",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mag_email": {
+                  "type": "string",
+                  "example": "email"
+                },
+                "mag_senha": {
+                  "type": "string",
+                  "example": "senha"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Delete um login",
+        "description": "Delete um login existente com base no ID",
         "parameters": [
           {
             "name": "id",

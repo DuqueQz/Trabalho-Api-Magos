@@ -33,7 +33,7 @@ const deleteAmizade = async (params) => {
     await db.query(sql_delete, [id]);
 };
 
-const sql_put = `
+const sql_put = `   
     UPDATE amizades
     SET amiz_id_mago_1 = $2, amiz_id_mago_2 = $3, amiz_data_do_inicio = $4, amiz_status = $5
     WHERE amiz_id = $1

@@ -1,13 +1,13 @@
 const db = require('../configs/pg');
 
 const sql_insert = `
-    INSERT INTO magos (mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio)
-    VALUES ($1, $2, $3, $4, $5, $6)
+    INSERT INTO magos (mag_email, mag_senha, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
 `;
 
 const postMago = async (params) => {
-    const { mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio } = params;
-    return await db.query(sql_insert, [mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio]);
+    const { mag_email, mag_senha, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio } = params;
+    return await db.query(sql_insert, [mag_email, mag_senha, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio]);
 };
 
 const sql_get = `
