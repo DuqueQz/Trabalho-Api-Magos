@@ -54,5 +54,17 @@ module.exports = (app) => {
         // #swagger.tags = ["Mensagens"]
         // #swagger.summary = 'Atualize parcialmente uma Mensagem'
         // #swagger.description = 'Atualize parcialmente uma mensagem existente'
+        /*#swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para Inserir um novo mago',
+            type: 'json',
+            schema: {
+                msg_remetente: "mago 1",
+                msg_destinatario: "mago 2",
+                msg_conteudo: "deu boa aqui a troca",
+                msg_data_de_envio: "2003-09-03"
+            }
+           }
+           */
     );
 };

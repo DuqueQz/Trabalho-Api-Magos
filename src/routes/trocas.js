@@ -51,5 +51,16 @@ module.exports = (app) => {
         // #swagger.tags = ["Trocas"]
         // #swagger.summary = 'Atualize parcialmente uma Troca'
         // #swagger.description = 'Atualize parcialmente uma troca existente'
+        /*#swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para Inserir um novo mago',
+            type: 'json',
+            schema: {
+                troca_id_mago_ofertante: 1,
+                troca_id_mago_interessado: 1,
+                troca_data: "2003-09-03"
+            }
+           }
+           */
     );
 };

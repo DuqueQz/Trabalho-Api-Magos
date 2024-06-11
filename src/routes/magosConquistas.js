@@ -50,5 +50,15 @@ module.exports = (app) => {
         // #swagger.tags = ["Magos Conquistas"]
         // #swagger.summary = 'Atualize parcialmente uma Conquista de Mago'
         // #swagger.description = 'Atualize parcialmente uma conquista de mago existente'
+        /*#swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para Inserir um novo mago',
+            type: 'json',
+            schema: {
+                conq_id: 1,
+                conq_data_da_conquista: "2000-01-01"
+            }
+           }
+           */
     );
 };

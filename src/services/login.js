@@ -19,8 +19,8 @@ const sql_authenticate = `
     WHERE mag_email = $1 AND mag_password = $2
 `;
 
-const authenticate = async (email, senha) => {
-    const result = await db.query(sql_authenticate, [email, senha]);
+const authenticate = async (mag_email, mag_password) => {
+    const result = await db.query(sql_authenticate, [mag_email, mag_password]);
     if (result.rows.length > 0) {
         return result.rows[0];
     } else {

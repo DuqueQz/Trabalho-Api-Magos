@@ -61,5 +61,21 @@ module.exports = (app) => {
         // #swagger.tags = ["Itens Trocados"]
         // #swagger.summary = 'Atualize parcialmente um Item Trocado'
         // #swagger.description = 'Atualize parcialmente um item trocado existente'
+        /* 
+           #swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para adicionar uma Itens Trocados',
+            type: 'json',
+            schema: {
+                troca_id: 1,
+                item_nome: "bola de fogo",
+                item_descricao: "lança uyma bola de fogo",
+                item_nivel_de_dificuldade: 1,
+                item_escola_de_magia: "piromancia",
+                item_dano: 100,
+                item_mana: 50,
+            }
+           }
+        */
     );
 };

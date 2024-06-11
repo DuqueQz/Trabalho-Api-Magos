@@ -13,15 +13,14 @@ module.exports = (app) => {
         // #swagger.description = 'Autentique um usuário com email e senha'
         /*#swagger.parameters['json'] = {
             in: 'body',
-            description: 'Dados para Atualize um login',
+            description: 'Dados para autenticar um login',
             type: 'json',
             schema: {
                 mag_email: "email",
                 mag_password: "senha",
             }
-           }
-           */
-        
+        }
+        */
     );
 
     app.put('/login/:id', loginController.updateLogin
@@ -30,14 +29,14 @@ module.exports = (app) => {
         // #swagger.description = 'Atualize um login existente com base no ID'
         /*#swagger.parameters['json'] = {
             in: 'body',
-            description: 'Dados para Atualize um login',
+            description: 'Dados para atualizar um login',
             type: 'json',
             schema: {
                 mag_email: "email",
                 mag_password: "senha",
             }
-           }
-           */
+        }
+        */
     );
 
     app.delete('/login/:id', loginController.deleteLogin

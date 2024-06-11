@@ -56,6 +56,18 @@ module.exports = (app) => {
         /* #swagger.tags = ["Avaliações"]
            #swagger.summary = 'Atualize parcialmente uma Avaliação'
            #swagger.description = 'Atualize parcialmente uma avaliação existente'
+           #swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para adicionar uma avaliação',
+            type: 'json',
+            schema: {
+                ava_id_troca: 1,
+                ava_id_mago_avaliador: 2,
+                ava_pontuacao: 200,
+                ava_comentario: "Boa troca",
+                ava_data_da_avaliacao: "2003-09-03"
+            }
+           }
         */
     );
 };

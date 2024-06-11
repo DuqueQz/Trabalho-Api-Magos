@@ -55,5 +55,18 @@ module.exports = (app) => {
         // #swagger.tags = ["Interesses"]
         // #swagger.summary = 'Atualize parcialmente um Interesse'
         // #swagger.description = 'Atualize parcialmente um interesse existente'
+        /* 
+           #swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para adicionar uma habilidade',
+            type: 'json',
+            schema: {
+                int_id_mago: 1,
+                int_id_habilidade: 1,
+                int_nivel_de_interesse: 11,
+                int_data_de_registro: "2003-09-03"
+            }
+           }
+        */
     );
 };

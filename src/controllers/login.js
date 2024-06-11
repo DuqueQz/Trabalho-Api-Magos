@@ -11,8 +11,8 @@ const getLogins = async (req, res, next) => {
 
 const authenticate = async (req, res, next) => {
     try {
-        const { email, senha } = req.body;
-        const retorno = await loginService.authenticate(email, senha);
+        const { mag_email, mag_password } = req.body;
+        const retorno = await loginService.authenticate(mag_email, mag_password);
         if (retorno) {
             res.status(200).json({ message: 'Autenticado com sucesso' });
         } else {

@@ -53,6 +53,17 @@ module.exports = (app) => {
         /* #swagger.tags = ["Amizades"]
            #swagger.summary = 'Faça uma alteração parcial na Amizade'
            #swagger.description = 'Faça uma alteração parcial na Amizade'
+           #swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para atualizar uma Amizade',
+            type: 'json',
+            schema: {
+                amiz_id_mago_1: 1,
+                amiz_id_mago_2: 2,
+                amiz_data_do_inicio: "2003-09-03",
+                amiz_status: "ativa"
+            }
+           }
         */
     );
 };

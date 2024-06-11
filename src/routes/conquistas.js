@@ -55,6 +55,19 @@ module.exports = (app) => {
         // #swagger.tags = ["Conquistas"]
         // #swagger.summary = 'Atualize parcialmente uma Conquista'
         // #swagger.description = 'Atualize parcialmente uma conquista existente'
+        /* 
+           #swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para alterar uma conquista',
+            type: 'json',
+            schema: {
+                conq_descricao_da_conquista: "Dados",
+                conq_pontuacao: 200,
+                conq_tipo: "Bosses",
+                conq_recompensa: "10 diamantes"
+            }
+           }
+        */
     );
 };
 

@@ -61,5 +61,21 @@ module.exports = (app) => {
         // #swagger.tags = ["Habilidades Mágicas"]
         // #swagger.summary = 'Atualize parcialmente uma Habilidade Mágica'
         // #swagger.description = 'Atualize parcialmente uma habilidade mágica existente'
+        /* 
+           #swagger.parameters['json'] = {
+            in: 'body',
+            description: 'Dados para adicionar uma habilidade',
+            type: 'json',
+            schema: {
+                hab_nome_da_habilidade: "bola de fogo",
+                hab_descricao: "Lança uma bola de fogo",
+                hab_nivel_de_dificuldade: 1,
+                hab_escola_de_magia: "piromancia",
+                hab_dano: 100,
+                hab_mana: 50,
+                hab_cooldown: 10
+            }
+           }
+        */
     );
 };
