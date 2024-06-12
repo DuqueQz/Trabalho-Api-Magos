@@ -1,4 +1,7 @@
 const db = require('../configs/pg');
+const jwt = require('jsonwebtoken')
+const cript = require('../utils/salt')
+const fs = require('fs')
 
 const sql_get = `
     SELECT mag_id, mag_email, mag_password
@@ -13,20 +16,36 @@ const getLogins = async () => {
     return logins;
 };
 
-const sql_authenticate = `
-    SELECT mag_id, mag_email, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio
-    FROM magos
-    WHERE mag_email = $1 AND mag_password = $2
-`;
+const sql_post = 
+`select mag_email,
+        mag_salt, 
+        mag_password
+   from magos
+  where mag_email = $1 `
 
-const authenticate = async (mag_email, mag_password) => {
-    const result = await db.query(sql_authenticate, [mag_email, mag_password]);
-    if (result.rows.length > 0) {
-        return result.rows[0];
-    } else {
-        return null;
+const login = async(params) => {
+    console.log(params)
+    const{user, pass} = params
+    result = await db.query(sql_post, [user])
+    if (!result.rows.length) throw new Error("Usuário não existe")
+    else {
+console.log(result.rows)
+        const salt = result.rows[0].mag_salt
+        const password = result.rows[0].mag_password
+        if (cript.comparePassword(password, salt, pass)){
+            let perfilAcesso = result.rows[0].username
+            const privateKey = fs.readFileSync("./src/private/private_key.pem");
+            let token = jwt.sign({perfilAcesso}, privateKey, {algorithm: 'RS256', expiresIn: '7d'})
+            return {
+                status: 'Logado com sucesso!',
+                user: result.rows[0].username,
+                token: token
+            }
+        } else {
+            throw {status: 400, type: 'WARN', message: 'Senha inválida!', detail: ''}
+        }
     }
-};
+}
 
 const sql_update = `
     UPDATE magos
@@ -50,7 +69,7 @@ const deleteLogin = async (id) => {
 
 module.exports = {
     getLogins,
-    authenticate,
+    login,
     updateLogin,
     deleteLogin
 };

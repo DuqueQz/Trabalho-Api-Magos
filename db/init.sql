@@ -1,13 +1,14 @@
 -- Tabela de magos 
 CREATE TABLE magos (
     mag_id SERIAL PRIMARY KEY,
-    mag_email varchar(50),
-    mag_password varchar(50),
-    mag_especializacao VARCHAR(50) NOT NULL,
+    mag_email TEXT NOT NULL,
+    mag_password TEXT NOT NULL,
+    mag_salt TEXT NOT NULL,
+    mag_especializacao TEXT NOT NULL,
     mag_nivel_de_magia INT NOT NULL,
-    mag_nome VARCHAR(100),
+    mag_nome TEXT NOT NULL,
     mag_data_de_nascimento DATE,
-    mag_nacionalidade VARCHAR(50),
+    mag_nacionalidade TEXT NOT NULL,
     mag_bio TEXT
 );
 

@@ -14,6 +14,7 @@ const postMago = async (req, res, next) => {
         const retorno = await magosService.postMago(req.body);
         res.status(201).json(retorno);
     } catch (err) {
+        console.log(err);
         res.status(500).send(err.message);
     }
 };

@@ -7,7 +7,7 @@ module.exports = (app) => {
         // #swagger.description = 'Obtenha a lista de todos os logins'
     );
 
-    app.post('/login/authenticate', loginController.authenticate
+    app.post('/login/authenticate', loginController.login
         // #swagger.tags = ["Login"]
         // #swagger.summary = 'Autentique um usuário'
         // #swagger.description = 'Autentique um usuário com email e senha'

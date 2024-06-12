@@ -1,5 +1,5 @@
 const magosController = require('../controllers/magos');
-
+const checkPermission = require('../middleware/auth');
 module.exports = (app) => {
     app.post('/magos', magosController.postMago
         // #swagger.tags = ["Magos"]
@@ -23,7 +23,7 @@ module.exports = (app) => {
         */
     );
 
-    app.get('/magos', magosController.getMagos
+    app.get('/magos',checkPermission.check, magosController.getMagos
         // #swagger.tags = ["Magos"]
         // #swagger.summary = 'Consulta a lista de Magos'
         // #swagger.description = 'Consulta lista de magos cadastrados'

@@ -1,13 +1,15 @@
 const db = require('../configs/pg');
+const salt = require('../utils/salt');
 
 const sql_insert = `
-    INSERT INTO magos (mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+    INSERT INTO magos (mag_email, mag_password, mag_salt, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
 `;
 
 const postMago = async (params) => {
     const { mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio } = params;
-    return await db.query(sql_insert, [mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio]);
+    const pass = salt.createUser(mag_password)
+    return await db.query(sql_insert, [mag_email, pass.hashedPass, pass.salt, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio]);
 };
 
 const sql_get = `

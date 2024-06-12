@@ -1,0 +1,19 @@
+version: "3"
+services:
+  api-magos:
+    image: api-magos
+    container_name: api-magos
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db-magos
+  db-magos:
+      image: db-magos
+      container_name: db-magos
+      environment:
+        ENV POSTGRES_USER: admin
+        ENV POSTGRES_PASSWORD: 123456
+        ENV POSTGRES_DB: magos
+      ports:
+        - "5432:5432"
+
