@@ -1,7 +1,7 @@
 const itensTrocadosController = require('../controllers/itensTrocados');
-
+const checkPermission = require('../middleware/auth');
 module.exports = (app) => {
-    app.post('/itensTrocados', itensTrocadosController.postItemTrocado
+    app.post('/itensTrocados',checkPermission.check, itensTrocadosController.postItemTrocado
         // #swagger.tags = ["Itens Trocados"]
         // #swagger.summary = 'Crie um Item Trocado'
         // #swagger.description = 'Crie um novo item trocado'
@@ -23,13 +23,13 @@ module.exports = (app) => {
         */
     );
 
-    app.get('/itensTrocados', itensTrocadosController.getItensTrocados
+    app.get('/itensTrocados',checkPermission.check, itensTrocadosController.getItensTrocados
         // #swagger.tags = ["Itens Trocados"]
         // #swagger.summary = 'Consulta a lista de Itens Trocados'
         // #swagger.description = 'Consulta lista de itens trocados cadastrados'
     );
 
-    app.put('/itensTrocados/:id', itensTrocadosController.putItemTrocado
+    app.put('/itensTrocados/:id',checkPermission.check, itensTrocadosController.putItemTrocado
         // #swagger.tags = ["Itens Trocados"]
         // #swagger.summary = 'Atualize um Item Trocado'
         // #swagger.description = 'Atualize um item trocado existente'
@@ -51,13 +51,13 @@ module.exports = (app) => {
         */
     );
 
-    app.delete('/itensTrocados/:id', itensTrocadosController.deleteItemTrocado
+    app.delete('/itensTrocados/:id',checkPermission.check, itensTrocadosController.deleteItemTrocado
         // #swagger.tags = ["Itens Trocados"]
         // #swagger.summary = 'Delete um Item Trocado'
         // #swagger.description = 'Apague um item trocado da lista'
     );
 
-    app.patch('/itensTrocados/:id', itensTrocadosController.patchItemTrocado
+    app.patch('/itensTrocados/:id',checkPermission.check, itensTrocadosController.patchItemTrocado
         // #swagger.tags = ["Itens Trocados"]
         // #swagger.summary = 'Atualize parcialmente um Item Trocado'
         // #swagger.description = 'Atualize parcialmente um item trocado existente'

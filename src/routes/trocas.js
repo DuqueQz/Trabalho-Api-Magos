@@ -1,7 +1,7 @@
 const trocasController = require('../controllers/trocas');
-
+const checkPermission = require('../middleware/auth');
 module.exports = (app) => {
-    app.post('/trocas', trocasController.postTroca
+    app.post('/trocas',checkPermission.check, trocasController.postTroca
         // #swagger.tags = ["Trocas"]
         // #swagger.summary = 'Crie uma Troca'
         // #swagger.description = 'Crie uma nova troca'
@@ -18,13 +18,13 @@ module.exports = (app) => {
            */
     );
 
-    app.get('/trocas', trocasController.getTrocas
+    app.get('/trocas',checkPermission.check, trocasController.getTrocas
         // #swagger.tags = ["Trocas"]
         // #swagger.summary = 'Consulta a lista de Trocas'
         // #swagger.description = 'Consulta lista de trocas cadastradas'
     );
 
-    app.put('/trocas/:id', trocasController.putTroca
+    app.put('/trocas/:id',checkPermission.check, trocasController.putTroca
         // #swagger.tags = ["Trocas"]
         // #swagger.summary = 'Atualize uma Troca'
         // #swagger.description = 'Atualize uma troca existente'
@@ -41,13 +41,13 @@ module.exports = (app) => {
            */
     );
 
-    app.delete('/trocas/:id', trocasController.deleteTroca
+    app.delete('/trocas/:id',checkPermission.check, trocasController.deleteTroca
         // #swagger.tags = ["Trocas"]
         // #swagger.summary = 'Delete uma Troca'
         // #swagger.description = 'Apague uma troca da lista'
     );
 
-    app.patch('/trocas/:id', trocasController.patchTroca
+    app.patch('/trocas/:id',checkPermission.check, trocasController.patchTroca
         // #swagger.tags = ["Trocas"]
         // #swagger.summary = 'Atualize parcialmente uma Troca'
         // #swagger.description = 'Atualize parcialmente uma troca existente'

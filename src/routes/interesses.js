@@ -1,7 +1,7 @@
 const interessesController = require('../controllers/interesses');
-
+const checkPermission = require('../middleware/auth');
 module.exports = (app) => {
-    app.post('/interesses', interessesController.postInteresse
+    app.post('/interesses',checkPermission.check, interessesController.postInteresse
         // #swagger.tags = ["Interesses"]
         // #swagger.summary = 'Crie um Interesse'
         // #swagger.description = 'Crie um novo interesse'
@@ -20,13 +20,13 @@ module.exports = (app) => {
         */
     );
 
-    app.get('/interesses', interessesController.getInteresses
+    app.get('/interesses',checkPermission.check, interessesController.getInteresses
         // #swagger.tags = ["Interesses"]
         // #swagger.summary = 'Consulta a lista de Interesses'
         // #swagger.description = 'Consulta lista de interesses cadastrados'
     );
 
-    app.put('/interesses/:id', interessesController.putInteresse
+    app.put('/interesses/:id',checkPermission.check, interessesController.putInteresse
         // #swagger.tags = ["Interesses"]
         // #swagger.summary = 'Atualize um Interesse'
         // #swagger.description = 'Atualize um interesse existente'
@@ -45,13 +45,13 @@ module.exports = (app) => {
         */
     );
 
-    app.delete('/interesses/:id', interessesController.deleteInteresse
+    app.delete('/interesses/:id',checkPermission.check, interessesController.deleteInteresse
         // #swagger.tags = ["Interesses"]
         // #swagger.summary = 'Delete um Interesse'
         // #swagger.description = 'Apague um interesse da lista'
     );
 
-    app.patch('/interesses/:id', interessesController.patchInteresse
+    app.patch('/interesses/:id',checkPermission.check, interessesController.patchInteresse
         // #swagger.tags = ["Interesses"]
         // #swagger.summary = 'Atualize parcialmente um Interesse'
         // #swagger.description = 'Atualize parcialmente um interesse existente'

@@ -1,7 +1,7 @@
 const magosController = require('../controllers/magos');
 const checkPermission = require('../middleware/auth');
 module.exports = (app) => {
-    app.post('/magos', magosController.postMago
+    app.post('/magos',checkPermission.check, magosController.postMago
         // #swagger.tags = ["Magos"]
         // #swagger.summary = 'Crie um Mago'
         // #swagger.description = 'Crie um novo mago'
@@ -29,7 +29,7 @@ module.exports = (app) => {
         // #swagger.description = 'Consulta lista de magos cadastrados'
     );
 
-    app.put('/magos/:id', magosController.putMago
+    app.put('/magos/:id',checkPermission.check, magosController.putMago
         // #swagger.tags = ["Magos"]
         // #swagger.summary = 'Atualize um Mago'
         // #swagger.description = 'Atualize um mago existente'
@@ -49,13 +49,13 @@ module.exports = (app) => {
         */
     );
 
-    app.delete('/magos/:id', magosController.deleteMago
+    app.delete('/magos/:id',checkPermission.check, magosController.deleteMago
         // #swagger.tags = ["Magos"]
         // #swagger.summary = 'Delete um Mago'
         // #swagger.description = 'Apague um mago da lista'
     );
 
-    app.patch('/magos/:id', magosController.patchMago
+    app.patch('/magos/:id',checkPermission.check, magosController.patchMago
         // #swagger.tags = ["Magos"]
         // #swagger.summary = 'Atualize parcialmente um Mago'
         // #swagger.description = 'Atualize parcialmente um mago existente'

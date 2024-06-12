@@ -1,7 +1,7 @@
 const mensagensController = require('../controllers/mensagens');
-
+const checkPermission = require('../middleware/auth');
 module.exports = (app) => {
-    app.post('/mensagens', mensagensController.postMensagem
+    app.post('/mensagens',checkPermission.check, mensagensController.postMensagem
         // #swagger.tags = ["Mensagens"]
         // #swagger.summary = 'Crie uma Mensagem'
         // #swagger.description = 'Crie uma nova mensagem'
@@ -20,13 +20,13 @@ module.exports = (app) => {
            */
     );
 
-    app.get('/mensagens', mensagensController.getMensagens
+    app.get('/mensagens',checkPermission.check, mensagensController.getMensagens
         // #swagger.tags = ["Mensagens"]
         // #swagger.summary = 'Consulta a lista de Mensagens'
         // #swagger.description = 'Consulta lista de mensagens cadastradas'
     );
 
-    app.put('/mensagens/:id', mensagensController.putMensagem
+    app.put('/mensagens/:id',checkPermission.check, mensagensController.putMensagem
         // #swagger.tags = ["Mensagens"]
         // #swagger.summary = 'Atualize uma Mensagem'
         // #swagger.description = 'Atualize uma mensagem existente'
@@ -44,13 +44,13 @@ module.exports = (app) => {
            */
     );
 
-    app.delete('/mensagens/:id', mensagensController.deleteMensagem
+    app.delete('/mensagens/:id',checkPermission.check, mensagensController.deleteMensagem
         // #swagger.tags = ["Mensagens"]
         // #swagger.summary = 'Delete uma Mensagem'
         // #swagger.description = 'Apague uma mensagem da lista'
     );
 
-    app.patch('/mensagens/:id', mensagensController.patchMensagem
+    app.patch('/mensagens/:id',checkPermission.check, mensagensController.patchMensagem
         // #swagger.tags = ["Mensagens"]
         // #swagger.summary = 'Atualize parcialmente uma Mensagem'
         // #swagger.description = 'Atualize parcialmente uma mensagem existente'

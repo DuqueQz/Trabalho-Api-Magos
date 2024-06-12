@@ -1,7 +1,7 @@
 const amizadesController = require('../controllers/amizades');
-
+const checkPermission = require('../middleware/auth');
 module.exports = (app) => {
-    app.post('/amizades', amizadesController.postAmizade
+    app.post('/amizades',checkPermission.check, amizadesController.postAmizade
         /* #swagger.tags = ["Amizades"]
            #swagger.summary = 'Insira uma Amizade'
            #swagger.description = 'Insira uma Amizade Nova'
@@ -19,13 +19,13 @@ module.exports = (app) => {
         */
     );
 
-    app.get('/amizades', amizadesController.getAmizades
+    app.get('/amizades',checkPermission.check, amizadesController.getAmizades
         // #swagger.tags = ["Amizades"]
         // #swagger.summary = 'Consulta a lista de Amizades'
         // #swagger.description = 'Consulta lista de amizades cadastradas'
     );
 
-    app.put('/amizades/:id', amizadesController.putAmizade
+    app.put('/amizades/:id',checkPermission.check, amizadesController.putAmizade
         /* #swagger.tags = ["Amizades"]
            #swagger.summary = 'Faça uma alteração na Amizade'
            #swagger.description = 'Faça uma alteração na Amizade'
@@ -43,13 +43,13 @@ module.exports = (app) => {
         */
     );
 
-    app.delete('/amizades/:id', amizadesController.deleteAmizade
+    app.delete('/amizades/:id',checkPermission.check, amizadesController.deleteAmizade
         // #swagger.tags = ["Amizades"]
         // #swagger.summary = 'Delete uma Amizade'
         // #swagger.description = 'Apague uma Amizade na Lista'
     );
 
-    app.patch('/amizades/:id', amizadesController.patchAmizade
+    app.patch('/amizades/:id',checkPermission.check, amizadesController.patchAmizade
         /* #swagger.tags = ["Amizades"]
            #swagger.summary = 'Faça uma alteração parcial na Amizade'
            #swagger.description = 'Faça uma alteração parcial na Amizade'

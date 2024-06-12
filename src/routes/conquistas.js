@@ -1,7 +1,7 @@
 const conquistasController = require('../controllers/conquistas');
-
+const checkPermission = require('../middleware/auth');
 module.exports = (app) => {
-    app.post('/conquistas', conquistasController.postConquista
+    app.post('/conquistas',checkPermission.check, conquistasController.postConquista
         // #swagger.tags = ["Conquistas"]
         // #swagger.summary = 'Crie uma Conquista'
         // #swagger.description = 'Crie uma nova conquista'
@@ -20,13 +20,13 @@ module.exports = (app) => {
         */
     );
 
-    app.get('/conquistas', conquistasController.getConquistas
+    app.get('/conquistas',checkPermission.check, conquistasController.getConquistas
         // #swagger.tags = ["Conquistas"]
         // #swagger.summary = 'Consulta a lista de Conquistas'
         // #swagger.description = 'Consulta lista de conquistas cadastradas'
     );
 
-    app.put('/conquistas/:id', conquistasController.putConquista
+    app.put('/conquistas/:id',checkPermission.check, conquistasController.putConquista
         // #swagger.tags = ["Conquistas"]
         // #swagger.summary = 'Atualize uma Conquista'
         // #swagger.description = 'Atualize uma conquista existente'
@@ -45,13 +45,13 @@ module.exports = (app) => {
         */
     );
 
-    app.delete('/conquistas/:id', conquistasController.deleteConquista
+    app.delete('/conquistas/:id',checkPermission.check, conquistasController.deleteConquista
         // #swagger.tags = ["Conquistas"]
         // #swagger.summary = 'Delete uma Conquista'
         // #swagger.description = 'Apague uma conquista da lista'
     );
 
-    app.patch('/conquistas/:id', conquistasController.patchConquista
+    app.patch('/conquistas/:id',checkPermission.check, conquistasController.patchConquista
         // #swagger.tags = ["Conquistas"]
         // #swagger.summary = 'Atualize parcialmente uma Conquista'
         // #swagger.description = 'Atualize parcialmente uma conquista existente'

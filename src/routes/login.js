@@ -1,7 +1,7 @@
 const loginController = require('../controllers/login');
-
+const checkPermission = require('../middleware/auth');
 module.exports = (app) => {
-    app.get('/login', loginController.getLogins
+    app.get('/login',checkPermission.check, loginController.getLogins
         // #swagger.tags = ["Login"]
         // #swagger.summary = 'Obtenha todos os logins'
         // #swagger.description = 'Obtenha a lista de todos os logins'
@@ -23,7 +23,7 @@ module.exports = (app) => {
         */
     );
 
-    app.put('/login/:id', loginController.updateLogin
+    app.put('/login/:id',checkPermission.check, loginController.updateLogin
         // #swagger.tags = ["Login"]
         // #swagger.summary = 'Atualize um login'
         // #swagger.description = 'Atualize um login existente com base no ID'
@@ -39,7 +39,7 @@ module.exports = (app) => {
         */
     );
 
-    app.delete('/login/:id', loginController.deleteLogin
+    app.delete('/login/:id',checkPermission.check, loginController.deleteLogin
         // #swagger.tags = ["Login"]
         // #swagger.summary = 'Delete um login'
         // #swagger.description = 'Delete um login existente com base no ID'
