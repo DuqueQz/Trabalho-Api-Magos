@@ -3,27 +3,37 @@ const cript = require('../utils/salt');
 
 const sql_delete_magos_conquistas = `
     DELETE FROM magos_conquistas
-    where mag_id = $1
+    WHERE mag_id = $1
 `;
 
 const sql_delete_magos_interesses = `
     DELETE FROM interesses
-    where int_id_mago = $1
+    WHERE int_id_mago = $1
+`;
+
+const sql_delete_avaliacoes = `
+    DELETE FROM avaliacoes
+    WHERE ava_id_troca IN (SELECT troca_id FROM trocas WHERE troca_id_mago_ofertante = $1 OR troca_id_mago_interessado = $1)
+`;
+
+const sql_delete_itens_trocados = `
+    DELETE FROM itens_trocados
+    WHERE troca_id IN (SELECT troca_id FROM trocas WHERE troca_id_mago_ofertante = $1 OR troca_id_mago_interessado = $1)
+`;
+
+const sql_delete_mensagens = `
+    DELETE FROM mensagens
+    WHERE msg_id_troca IN (SELECT troca_id FROM trocas WHERE troca_id_mago_ofertante = $1 OR troca_id_mago_interessado = $1)
 `;
 
 const sql_delete_magos_trocas = `
     DELETE FROM trocas
-    where troca_id_mago_ofertante = $1 OR troca_id_mago_interessado = $1
-`;
-
-const sql_delete_magos_avaliacoes = `
-    DELETE FROM avaliacoes
-    where ava_id_mago_avaliador = $1
+    WHERE troca_id_mago_ofertante = $1 OR troca_id_mago_interessado = $1
 `;
 
 const sql_delete_magos_amizades = `
     DELETE FROM amizades
-    where amiz_id_mago1 = $1 OR amiz_id_mago2 = $1
+    WHERE amiz_id_mago_1 = $1 OR amiz_id_mago_2 = $1
 `;
 
 const sql_get = `
@@ -57,11 +67,13 @@ const sql_delete = `
 
 const deleteMago = async (params) => {
     const { id } = params;
+    await db.query(sql_delete_avaliacoes, [id]);
+    await db.query(sql_delete_itens_trocados, [id]);
+    await db.query(sql_delete_mensagens, [id]);
+    await db.query(sql_delete_magos_trocas, [id]);
     await db.query(sql_delete_magos_amizades, [id]);
     await db.query(sql_delete_magos_conquistas, [id]);
     await db.query(sql_delete_magos_interesses, [id]);
-    await db.query(sql_delete_magos_trocas, [id]);
-    await db.query(sql_delete_magos_avaliacoes, [id]);
     await db.query(sql_delete, [id]);
 };
 
