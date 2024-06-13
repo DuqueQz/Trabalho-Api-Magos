@@ -1,19 +1,7 @@
 const db = require('../configs/pg');
-const salt = require('../utils/salt');
-
-const sql_insert = `
-    INSERT INTO magos (mag_email, mag_password, mag_salt, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-`;
-
-const postMago = async (params) => {
-    const { mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio } = params;
-    const pass = salt.createUser(mag_password)
-    return await db.query(sql_insert, [mag_email, pass.hashedPass, pass.salt, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio]);
-};
 
 const sql_get = `
-    SELECT mag_id, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio
+    SELECT mag_id, mag_email, mag_password
     FROM magos
 `;
 
@@ -23,6 +11,16 @@ const getMagos = async () => {
         .then(ret => magos = { total: ret.rows.length, magos: ret.rows })
         .catch(err => magos = err.stack);
     return magos;
+};
+
+const sql_post = `
+    INSERT INTO magos (mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+`;
+
+const postMago = async (params) => {
+    const { mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio } = params;
+    return await db.query(sql_post, [mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio]);
 };
 
 const sql_delete = `
@@ -37,13 +35,13 @@ const deleteMago = async (params) => {
 
 const sql_put = `
     UPDATE magos
-    SET mag_especializacao = $2, mag_nivel_de_magia = $3, mag_nome = $4, mag_data_de_nascimento = $5, mag_nacionalidade = $6, mag_bio = $7
+    SET mag_email = $2, mag_password = $3, mag_especializacao = $4, mag_nivel_de_magia = $5, mag_nome = $6, mag_data_de_nascimento = $7, mag_nacionalidade = $8, mag_bio = $9
     WHERE mag_id = $1
 `;
 
 const putMago = async (params) => {
-    const { id, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio } = params;
-    return await db.query(sql_put, [id, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio]);
+    const { id, mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio } = params;
+    return await db.query(sql_put, [id, mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio]);
 };
 
 const sql_patch = `
@@ -57,9 +55,19 @@ const patchMago = async (params) => {
     binds.push(params.id);
     let countParams = 1;
 
+    if (params.mag_email) {
+        countParams++;
+        fields += ` mag_email = $${countParams}`;
+        binds.push(params.mag_email);
+    }
+    if (params.mag_password) {
+        countParams++;
+        fields += (fields ? ',' : '') + ` mag_password = $${countParams}`;
+        binds.push(params.mag_password);
+    }
     if (params.mag_especializacao) {
         countParams++;
-        fields += ` mag_especializacao = $${countParams}`;
+        fields += (fields ? ',' : '') + ` mag_especializacao = $${countParams}`;
         binds.push(params.mag_especializacao);
     }
     if (params.mag_nivel_de_magia) {
@@ -93,9 +101,8 @@ const patchMago = async (params) => {
     return await db.query(sql, binds);
 };
 
-module.exports.postMago = postMago 
 module.exports.getMagos = getMagos
+module.exports.postMago = postMago
 module.exports.deleteMago = deleteMago
 module.exports.putMago = putMago
 module.exports.patchMago = patchMago
-

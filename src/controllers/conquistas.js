@@ -56,5 +56,4 @@ module.exports.getConquistas = getConquistas
 module.exports.postConquista = postConquista
 module.exports.deleteConquista = deleteConquista
 module.exports.putConquista = putConquista
-module.exports.patchConquista = patchConquista 
-
+module.exports.patchConquista = patchConquista

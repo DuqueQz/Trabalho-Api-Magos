@@ -58,19 +58,8 @@ const updateLogin = async (req, res, next) => {
     }
 };
 
-const deleteLogin = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        await loginService.deleteLogin(id);
-        res.status(204).send();
-    } catch (err) {
-        res.status(500).send(err.message);
-    }
-};
-
 module.exports = {
     getLogins,
     login,
     updateLogin,
-    deleteLogin
 };

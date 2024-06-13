@@ -38,10 +38,4 @@ module.exports = (app) => {
         }
         */
     );
-
-    app.delete('/login/:id',checkPermission.check, loginController.deleteLogin
-        // #swagger.tags = ["Login"]
-        // #swagger.summary = 'Delete um login'
-        // #swagger.description = 'Delete um login existente com base no ID'
-    );
 };

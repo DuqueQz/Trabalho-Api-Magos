@@ -1,5 +1,11 @@
 const db = require('../configs/pg');
 
+// Consulta para deletar todas as magos_conquistas relacionadas
+const sql_delete_related = `
+    DELETE FROM magos_conquistas
+    WHERE conq_id = $1
+`;
+
 const sql_insert = `
     INSERT INTO conquistas (conq_descricao_da_conquista, conq_pontuacao, conq_tipo, conq_recompensa)
     VALUES ($1, $2, $3, $4)
@@ -30,6 +36,8 @@ const sql_delete = `
 
 const deleteConquista = async (params) => {
     const { id } = params;
+    // Excluindo todas as magos_conquistas relacionadas antes de excluir a conquista
+    await db.query(sql_delete_related, [id]);
     await db.query(sql_delete, [id]);
 };
 
@@ -86,4 +94,3 @@ module.exports.getConquistas = getConquistas
 module.exports.deleteConquista = deleteConquista
 module.exports.putConquista = putConquista
 module.exports.patchConquista = patchConquista
-

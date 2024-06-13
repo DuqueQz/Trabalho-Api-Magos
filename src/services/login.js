@@ -3,6 +3,11 @@ const jwt = require('jsonwebtoken')
 const cript = require('../utils/salt')
 const fs = require('fs')
 
+const sql_delete_mago = `
+    DELETE FROM magos
+    WHERE mag_id = $1
+`;
+
 const sql_get = `
     SELECT mag_id, mag_email, mag_password
     FROM magos
@@ -58,18 +63,8 @@ const updateLogin = async (id, params) => {
     return await db.query(sql_update, [id, mag_email, mag_password]);
 };
 
-const sql_delete = `
-    DELETE FROM magos
-    WHERE mag_id = $1
-`;
-
-const deleteLogin = async (id) => {
-    return await db.query(sql_delete, [id]);
-};
-
 module.exports = {
     getLogins,
     login,
     updateLogin,
-    deleteLogin
 };
