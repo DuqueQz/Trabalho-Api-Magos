@@ -1,7 +1,33 @@
 const db = require('../configs/pg');
+const cript = require('../utils/salt');
+
+const sql_delete_magos_conquistas = `
+    DELETE FROM magos_conquistas
+    where mag_id = $1
+`;
+
+const sql_delete_magos_interesses = `
+    DELETE FROM interesses
+    where int_id_mago = $1
+`;
+
+const sql_delete_magos_trocas = `
+    DELETE FROM trocas
+    where troca_id_mago_ofertante = $1 OR troca_id_mago_interessado = $1
+`;
+
+const sql_delete_magos_avaliacoes = `
+    DELETE FROM avaliacoes
+    where ava_id_mago_avaliador = $1
+`;
+
+const sql_delete_magos_amizades = `
+    DELETE FROM amizades
+    where amiz_id_mago1 = $1 OR amiz_id_mago2 = $1
+`;
 
 const sql_get = `
-    SELECT mag_id, mag_email, mag_password
+    SELECT mag_id, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade
     FROM magos
 `;
 
@@ -14,13 +40,14 @@ const getMagos = async () => {
 };
 
 const sql_post = `
-    INSERT INTO magos (mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio)
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+    INSERT INTO magos (mag_email, mag_password, mag_salt, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
 `;
 
 const postMago = async (params) => {
     const { mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio } = params;
-    return await db.query(sql_post, [mag_email, mag_password, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio]);
+    const pass = cript.createUser(mag_password)
+    return await db.query(sql_post, [mag_email, pass.hashedPass, pass.salt, mag_especializacao, mag_nivel_de_magia, mag_nome, mag_data_de_nascimento, mag_nacionalidade, mag_bio]);
 };
 
 const sql_delete = `
@@ -30,6 +57,11 @@ const sql_delete = `
 
 const deleteMago = async (params) => {
     const { id } = params;
+    await db.query(sql_delete_magos_amizades, [id]);
+    await db.query(sql_delete_magos_conquistas, [id]);
+    await db.query(sql_delete_magos_interesses, [id]);
+    await db.query(sql_delete_magos_trocas, [id]);
+    await db.query(sql_delete_magos_avaliacoes, [id]);
     await db.query(sql_delete, [id]);
 };
 
